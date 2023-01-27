@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import Card from "./components/Card";
 import "./style.css";
+import axios from "axios";
+import {logDOM} from "@testing-library/react";
 
 const App = () => {
     const url = "https://newsapi.org/v2/everything?domains=wsj.com&apiKey=a526b2b49d1849beaf2494b29a24062d";
@@ -8,25 +10,47 @@ const App = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setError] = useState(false);
 
-    async function getPosts() {
-        setIsLoading(true);
-        const response = await fetch(url);
-        const data = await response.json();
-        if(response.status > 300){
-            setIsLoading(true);
-            setError(true);
-        }
+    // async function getPosts() {
+    //     setIsLoading(true);
+    //     const response = await fetch(url);
+    //     const data = await response.json();
+    //     if(response.status > 300){
+    //         setIsLoading(true);
+    //         setError(true);
+    //     }
+    //
+    //     setPost(data.articles);
+    //     if(posts){
+    //         setIsLoading(false);
+    //     }
+    // }
 
-        setPost(data.articles);
-        if(posts){
-            setIsLoading(false);
-        }
+    const fetchPosts = () => {
+        setIsLoading(true);
+        axios.get(url)
+            .then((response) => {
+
+
+                    const data = response?.data;
+                    const articles = data?.articles;
+                    setPost(articles);
+                    if(posts){
+                        setIsLoading(false);
+                    }
+                    console.log(response.status);
+            })
+            .catch((err) => {
+                setIsLoading(false);
+                setError(true);
+                console.log(err + "Error is working")
+            });
     }
 
     useEffect(() => {
         console.log("Use Effect is rendered");
-        getPosts();
-    }, [getPosts()]);
+        // getPosts();
+        fetchPosts();
+    }, []);
 
 
 
