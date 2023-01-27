@@ -3,9 +3,11 @@
     margin: 0;
     box-sizing: border-box;
 }
+html{
+    scroll-behavior: smooth;
+}
 body{
     padding: 10px;
-    scroll-behavior: smooth;
     background-color: #d3d3d3;
 }
 section{

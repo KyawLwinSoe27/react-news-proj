@@ -26,7 +26,7 @@ const App = () => {
     useEffect(() => {
         console.log("Use Effect is rendered");
         getPosts();
-    }, [getPosts()]);
+    }, []);
 
 
 
