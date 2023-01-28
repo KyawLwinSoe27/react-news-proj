@@ -5,7 +5,7 @@ import axios from "axios";
 import {logDOM} from "@testing-library/react";
 
 const App = () => {
-    const url = "https://newsapi.org/v2/everything?domains=wsj.com&apiKey=a526b2b49d1849beaf2494b29a24062d";
+    const url = "https://newsapi.org/vs/everything?domains=wsj.com&apiKey=a526b2b49d1849beaf2494b29a24062d";
     const [posts, setPost] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [isError, setError] = useState(false);
@@ -59,12 +59,12 @@ const App = () => {
 
             <p>
                 Oops: Data Fetching can't display on public because I use free News API in this project.
-                Dowonload github link and run on your localhost to display web app.
+                <a href="https://github.com/KyawLwinSoe27/react-news-proj" target="_blank">Dowonload github link</a> and run on your localhost to display web app.
 
             </p>
 
 
-            <iframe width="1264" height="520" src="https://www.youtube.com/embed/CHwuDxR4WjQ?autoplay=1"
+            <iframe width="100%" height="520" src="https://www.youtube.com/embed/CHwuDxR4WjQ?autoplay=1"
                     title="SciFi Linux Terminal (CLI) Like Hacker On Movie"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowFullScreen></iframe>
