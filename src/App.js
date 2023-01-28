@@ -66,7 +66,7 @@ const App = () => {
 
             <iframe width="100%" height="520" src="https://www.youtube.com/embed/CHwuDxR4WjQ?autoplay=1"
                     title="SciFi Linux Terminal (CLI) Like Hacker On Movie"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+
                     allowFullScreen></iframe>
         </div>
     }
