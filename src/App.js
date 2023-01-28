@@ -7,7 +7,7 @@ import {logDOM} from "@testing-library/react";
 const App = () => {
     const url = "https://newsapi.org/v2/everything?domains=wsj.com&apiKey=a526b2b49d1849beaf2494b29a24062d";
     const [posts, setPost] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const [isError, setError] = useState(false);
 
     // async function getPosts() {
@@ -26,18 +26,15 @@ const App = () => {
     // }
 
     const fetchPosts = () => {
-        setIsLoading(true);
         axios.get(url)
             .then((response) => {
-
-
-                    const data = response?.data;
-                    const articles = data?.articles;
-                    setPost(articles);
-                    if(posts){
-                        setIsLoading(false);
-                    }
-                    console.log(response.status);
+                const data = response?.data;
+                const articles = data?.articles;
+                setPost(articles);
+                if (posts) {
+                    setIsLoading(false);
+                }
+                console.log(response.status);
             })
             .catch((err) => {
                 setIsLoading(false);
@@ -53,13 +50,25 @@ const App = () => {
     }, []);
 
 
-
     console.log("Component is rendered");
-    if(isLoading){
+    if (isLoading) {
         return <div className="lds-hourglass"></div>
     }
     if (isError) {
-        return <div>Oops: Data Fetching is failed</div>
+        return <div>
+
+            <p>
+                Oops: Data Fetching can't display on public because I use free News API in this project.
+                Dowonload github link and run on your localhost to display web app.
+
+            </p>
+
+
+            <iframe width="1264" height="520" src="https://www.youtube.com/embed/CHwuDxR4WjQ?autoplay=1"
+                    title="SciFi Linux Terminal (CLI) Like Hacker On Movie"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen></iframe>
+        </div>
     }
     return (
         <section>
@@ -73,7 +82,8 @@ const App = () => {
                     })
                 }
             </div>
-            <footer className="footer"><span>Copyright &#169; 2023 Kyaw Lwin Soe</span> <a href="#up" className="icon"><i
+            <footer className="footer"><span>Copyright &#169; 2023 Kyaw Lwin Soe</span> <a href="#up"
+                                                                                           className="icon"><i
                 className="fa-solid fa-angle-up"></i></a></footer>
         </section>
     )
